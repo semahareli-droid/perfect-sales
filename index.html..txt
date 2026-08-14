@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Sales Tracker</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛒 Daily Sales Tracker</h1>
+
+    <p id="serverStatus" class="online">
+        🟢 Connected to Server
+    </p>
+
+    <!-- Sale Form -->
+    <div class="card">
+
+        <h2>Record New Sale</h2>
+
+        <form id="saleForm">
+
+            <input
+                type="text"
+                id="item"
+                placeholder="Item Name"
+                required>
+
+            <input
+                type="number"
+                id="quantity"
+                placeholder="Quantity"
+                min="1"
+                required>
+
+            <input
+                type="number"
+                id="price"
+                placeholder="Unit Price (GHS)"
+                min="0.01"
+                step="0.01"
+                required>
+
+            <button type="submit">
+                Add Sale
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+
+        <div class="card">
+            <h3>Total Sales</h3>
+            <p id="totalSales">GHS 0.00</p>
+        </div>
+
+        <div class="card">
+            <h3>Transactions</h3>
+            <p id="transactions">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Units</h3>
+            <p id="units">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Best Item</h3>
+            <p id="bestItem">None</p>
+        </div>
+
+    </div>
+
+    <!-- Sales Table -->
+    <div class="card">
+
+        <h2>Sales Records</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                        <th>Date & Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="salesTable">
+                    <!-- Sales will appear here -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
